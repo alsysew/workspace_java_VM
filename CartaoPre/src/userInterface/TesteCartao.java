@@ -6,25 +6,25 @@ import core.CartaoPrePago;
 public class TesteCartao {
 	public static void main(String[] args) {
 		
-		CartaoPrePago  cp1;
-		CartaoCashBack cb1;
+		CartaoPrePago cartoes[];
 		
-		cp1 = new CartaoPrePago("A1","Andre",2021,05);
-		cb1 = new CartaoCashBack("B1","Ricardo",2022,06,2);
+		cartoes = new CartaoPrePago[5];  // 5 referencias para a superclasse CartaoPrePago
 		
-		System.out.println("Numero Cartão: "+cp1.getNumeroCartao()+" - Titular: "+cp1.getNometitular()+" - Validade: "+cp1.getMesValidade()+"/"+cp1.getAnoValidade());
-		cp1.adicionarCredito(100);
-		cp1.comprar(200);
-		System.out.println();
+		cartoes[0] = new CartaoPrePago ("Titular Prepago 1","1234567890",10,2030);
+		cartoes[1] = new CartaoPrePago ("Titular Prepago 2","2345678901",11,2030);
+		cartoes[2] = new CartaoCashBack("Titular Gold    1","3456789012",11,2030,0);
+		cartoes[3] = new CartaoCashBack("Titular Silver  1","4567890123",12,2030,1);
+		cartoes[4] = new CartaoCashBack("Titular Bronze  1","5678901234",11,2029,2);
 		
+		for (CartaoPrePago c: cartoes) {
+			c.adicionarCredito(1000);
+			System.out.println(c.exibirInfo());
+		}
 		
-		System.out.println("Numero Cartão: "+cb1.getNumeroCartao()+" - Titular: "+cb1.getNometitular()+" - Validade: "+cb1.getMesValidade()+"/"+cb1.getAnoValidade());
-		cb1.adicionarCredito(200);
-		cb1.comprar(50);
-		
+		for (CartaoPrePago c: cartoes) {
+			c.comprar(100);
+			System.out.println(c.exibirInfo());
+		}
 		
 	}
-	
-	
-	
 }
