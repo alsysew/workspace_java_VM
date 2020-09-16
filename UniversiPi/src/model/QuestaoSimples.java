@@ -33,7 +33,7 @@ public class QuestaoSimples {
 	}
 	
 	public boolean corrigir(String resposta) {
-		if (this.resposta.equals(resposta)) {
+		if (this.resposta.equalsIgnoreCase(resposta)) {
 			return true;
 		}
 		else {
